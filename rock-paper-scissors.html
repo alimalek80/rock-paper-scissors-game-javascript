@@ -15,6 +15,12 @@
 
 
     <script>
+        const score = {
+            wins: 0,
+            losses: 0,
+            ties: 0
+        };
+
         function pickComputerMove(randomNumber) {
             if (randomNumber < 0.33) {
                 return 'Rock';
@@ -38,7 +44,15 @@
                 result = 'You Lose.'
             }
 
-            alert(`You picked: ${playerMove}, Computer picked: ${computerMove}. Result is: ${result}`)
+            if (result === 'You Win.') {
+                score.wins += 1;
+            }else if (result === 'You Lose.') {
+                score.losses += 1;
+            }else if (result === 'Tie') {
+                score.ties += 1;
+            }
+
+            alert(`You picked: ${playerMove}, Computer picked: ${computerMove}. Result is: ${result}\n\nWins: ${score.wins}, Losses: ${score.losses}, Ties: ${score.ties}`)
         }
     </script>
 </body>
